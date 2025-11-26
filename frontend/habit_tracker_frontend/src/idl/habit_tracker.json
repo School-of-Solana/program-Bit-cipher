@@ -1,0 +1,132 @@
+{
+  "address": "BhiBkgLcMxZFa2MWXrRX4zd6zCbt2k9YKsRYGwzK6ZzM",
+  "metadata": {
+    "name": "habit_tracker",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "check_in",
+      "discriminator": [209, 253, 4, 217, 250, 241, 207, 50],
+      "accounts": [
+        {
+          "name": "habit",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": ["habit"]
+        }
+      ],
+      "args": [
+        {
+          "name": "habit_nonce",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "create_habit",
+      "discriminator": [6, 233, 240, 164, 87, 155, 14, 8],
+      "accounts": [
+        {
+          "name": "habit",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "habit_nonce",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
+      "accounts": [],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Habit",
+      "discriminator": [210, 33, 243, 232, 216, 99, 36, 217]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NameTooLong",
+      "msg": "Habit name too long"
+    },
+    {
+      "code": 6001,
+      "name": "CooldownNotElapsed",
+      "msg": "Must wait 24 hours between check-ins"
+    },
+    {
+      "code": 6002,
+      "name": "CounterOverflow",
+      "msg": "Counter overflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "Habit",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "count",
+            "type": "u64"
+          },
+          {
+            "name": "last_check_in",
+            "type": "i64"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "streak7",
+            "type": "bool"
+          },
+          {
+            "name": "streak30",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ]
+}

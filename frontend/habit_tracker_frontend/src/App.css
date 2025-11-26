@@ -1,0 +1,98 @@
+/* App.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+}
+
+/* FIX: Remove padding to make the gradient stretch edge-to-edge */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* padding: 2rem; <-- Removed */
+}
+
+.main-content {
+  max-width: 1200px;
+  /* Add margin for mobile padding and top spacing */
+  margin: 0 1rem;
+  margin-top: 2rem; /* Space between Header and main card */
+
+  /* Desktop override */
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #f3f4f6;
+  background: #fafafa;
+}
+
+.tab {
+  flex: 1;
+  padding: 1.25rem;
+  border: none;
+  background: transparent;
+  border-bottom: 3px solid transparent;
+  color: #666;
+  font-size: 1rem; /* Corrected typo: 'fontsize' to 'font-size' */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab.active {
+  background: white;
+  border-bottom: 3px solid #667eea;
+  color: #667eea;
+}
+
+.tab:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.gradient-button {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gradient-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important;
+}
+
+.habit-card {
+  transition: all 0.3s;
+}
+
+.habit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #667eea !important;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+/* Wallet button override */
+.wallet-adapter-button {
+  background: white !important;
+  color: #667eea !important;
+}
